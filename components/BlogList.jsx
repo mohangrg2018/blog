@@ -12,7 +12,9 @@ const BlogList = () => {
         <button
           onClick={() => setMenu("All")}
           className={`${
-            menu === "All" ? "bg-black text-white px-4 py-1 rounded-sm" : ""
+            menu === "All"
+              ? "bg-black text-white px-4 py-1 rounded-sm transition-all"
+              : ""
           } cursor-pointer`}
         >
           All
@@ -21,7 +23,7 @@ const BlogList = () => {
           onClick={() => setMenu("Technology")}
           className={`${
             menu === "Technology"
-              ? "bg-black text-white px-4 py-1 rounded-sm"
+              ? "bg-black text-white px-4 py-1 rounded-sm transition-all"
               : ""
           } cursor-pointer`}
         >
@@ -30,7 +32,9 @@ const BlogList = () => {
         <button
           onClick={() => setMenu("Startup")}
           className={`${
-            menu === "Startup" ? "bg-black text-white px-4 py-1 rounded-sm" : ""
+            menu === "Startup"
+              ? "bg-black text-white px-4 py-1 rounded-sm transition-all"
+              : ""
           } cursor-pointer`}
         >
           Startup
@@ -39,7 +43,7 @@ const BlogList = () => {
           onClick={() => setMenu("Lifestyle")}
           className={`${
             menu === "Lifestyle"
-              ? "bg-black text-white px-4 py-1 rounded-sm"
+              ? "bg-black text-white px-4 py-1 rounded-sm transition-all"
               : ""
           } cursor-pointer`}
         >
