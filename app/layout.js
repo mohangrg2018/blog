@@ -2,10 +2,9 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
-  variable: "--font-outfit",
   subsets: ["latin"],
+  variable: "--font-outfit",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -15,8 +14,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${outfit.variable} antialiased`}>{children}</body>
+    <html lang="en" className={outfit.variable}>
+      <body suppressHydrationWarning={true} className="antialiased">
+        {children}
+      </body>
     </html>
   );
 }
