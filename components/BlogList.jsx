@@ -8,7 +8,7 @@ const BlogList = () => {
   const [menu, setMenu] = useState("All");
   return (
     <section className="container__width mt-14 lg:mt-24 ">
-      <div className="flex items-center justify-center gap-10 mb-10">
+      <div className="flex items-center justify-center gap-4 lg:gap-10 mb-10">
         <button
           onClick={() => setMenu("All")}
           className={`${
@@ -49,10 +49,11 @@ const BlogList = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {blog_data
           .filter((item) => (menu === "All" ? true : menu === item.category))
-          .map((item, id) => {
+          .map((item, index) => {
             return (
               <BlogItem
-                key={item.id}
+                key={index}
+                id={item.id}
                 title={item.title}
                 description={item.description}
                 image={item.image}
