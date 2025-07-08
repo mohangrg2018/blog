@@ -1,16 +1,27 @@
 import connectDB from "@/lib/config/db.js";
 import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
-import BlogModel from "@/lib/models/BlogModel";
+import BlogModel from "@/lib/models/BlogModel.js";
 
 const loadDB = async () => {
   await connectDB();
 };
 
-export async function GET() {
-  return NextResponse.json({ msg: "API IS WORKING" });
+// API ENDPOINT TO GET ALL BLOGS
+export async function GET(request) {
+  await loadDB();
+
+  const blogId = request.nextUrl.searchParams.get("id");
+  if (blogId) {
+    const blog = await BlogModel.findById(blogId);
+    return NextResponse.json({ blog });
+  } else {
+    const blogs = await BlogModel.find({});
+    return NextResponse.json({ blogs });
+  }
 }
 
+// API ENDPOINT FOR UPLOADING BLOGS
 export async function POST(request) {
   await loadDB();
 

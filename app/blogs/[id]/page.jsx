@@ -2,6 +2,7 @@
 
 import { assets, blog_data } from "@/Assets/assets";
 import Footer from "@/components/Footer";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -11,17 +12,23 @@ const page = () => {
   const params = useParams();
   const [data, setData] = useState(null);
 
-  const fetchBlogData = async () => {
-    for (let i = 0; i < blog_data.length; i++) {
-      if (blog_data[i].id == params.id) {
-        setData(blog_data[i]);
-      }
-    }
-  };
-
   useEffect(() => {
+    const fetchBlogData = async () => {
+      try {
+        if (!params?.id) return;
+
+        const response = await axios.get(`/api/blog`, {
+          params: { id: params.id },
+        });
+
+        setData(response.data.blog);
+      } catch (error) {
+        console.error("Error fetching blog:", error);
+      }
+    };
+
     fetchBlogData();
-  }, []);
+  }, [params.id]);
 
   return (
     <section>
