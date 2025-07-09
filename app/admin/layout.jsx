@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 export default function AdminLayout({ children }) {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex">
       <ToastContainer theme="dark" />
       <div className="w-[200px] lg:w-[300px]">
         <Sidebar />

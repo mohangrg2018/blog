@@ -5,9 +5,11 @@ import React from "react";
 
 const Sidebar = () => {
   return (
-    <section className="bg-slate-100 h-full border-2 border-black">
+    <section className="bg-slate-100 min-h-screen border-2 border-black">
       <div className="py-3 px-4 h-[60px] border-b-2 border-black">
-        <Image src={assets.logo} alt="logo" width={120} height={120} />
+        <Link href="/admin">
+          <Image src={assets.logo} alt="logo" width={120} height={120} />
+        </Link>
       </div>
       <div className="relative w-full h-full mt-8 lg:mt-12">
         <div className="absolute right-0 flex flex-col gap-4">

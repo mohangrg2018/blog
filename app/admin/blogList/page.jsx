@@ -27,7 +27,7 @@ const page = () => {
   return (
     <div className="w-[90%] relative h-[80vh]">
       <h1 className="text-2xl font-semibold">All Blogs</h1>
-      <div className="mt-4">
+      <div className="mt-4 h-[60vh] overflow-y-auto scrollbar-hidden">
         <table className="w-full border border-black">
           <thead className="uppercase font-semibold bg-gray-200">
             <tr>

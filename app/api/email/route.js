@@ -31,3 +31,16 @@ export async function POST(request) {
     return NextResponse.json({ success: false, msg: "Error saving email" });
   }
 }
+
+export async function GET(request) {
+  await LoadDB();
+  const emails = await EmailModel.find({});
+  return NextResponse.json({ emails });
+}
+
+export async function DELETE(request) {
+  await LoadDB();
+  const id = await request.nextUrl.searchParams.get("id");
+  await EmailModel.findByIdAndDelete(id);
+  return NextResponse.json({ success: true, msg: "Email deleted" });
+}
