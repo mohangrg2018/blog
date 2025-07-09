@@ -1,9 +1,27 @@
+"use client";
+
 import { assets } from "@/Assets/assets";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const Header = () => {
+  const [email, setEmail] = useState("");
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("email", email);
+    const response = await axios.post("/api/email", formData);
+    if (response.data.success) {
+      toast.success(response.data.msg);
+    } else {
+      toast.error(response.data.msg);
+    }
+    setEmail("");
+  };
   return (
     <header className="pt-4">
       <div className="container__width">
@@ -21,8 +39,13 @@ const Header = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum,
             unde suscipit nostrum omnis aliquam molestias dolore molestiae
           </p>
-          <form className="border-2 border-black shadow-[-5px_5px_0px_0px_#000] flex items-center">
+          <form
+            onSubmit={onSubmitHandler}
+            className="border-2 border-black shadow-[-5px_5px_0px_0px_#000] flex items-center"
+          >
             <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               className="outline-none pl-4 w-[200px] lg:w-[300px]"
               type="email"
               placeholder="Enter your email"
